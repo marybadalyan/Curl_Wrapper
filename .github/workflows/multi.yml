@@ -1,0 +1,46 @@
+name: C++ CI with CMake and vcpkg
+
+# Triggers the workflow on push or pull request events for the main branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # Strategy to build on multiple operating systems
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    # 1. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v4
+
+    # 2. This action sets up vcpkg, reads vcpkg.json, installs dependencies, and caches them.
+    # It also sets the CMAKE_TOOLCHAIN_FILE environment variable for the next steps.
+    - name: Install dependencies with vcpkg
+      uses: microsoft/run-vcpkg@v11
+      with:
+        # This points to the directory where you have vcpkg.json
+        vcpkgDirectory: ${{ github.workspace }}
+        # The triplet for macos needs to be specified on ARM runners
+        vcpkgTriplet: ${{ runner.os == 'macOS' && 'x64-osx' || '' }}
+
+
+    # 3. Configure CMake. It will use the toolchain file from the previous step to find vcpkg libraries.
+    - name: Configure CMake
+      run: >
+        cmake -B build
+        -S ${{ github.workspace }}
+        -DCMAKE_BUILD_TYPE=Release
+
+    # 4. Build the project
+    - name: Build
+      run: cmake --build build --config Release
+
+   
