@@ -19,11 +19,6 @@ find_package(CURL REQUIRED)
 # This creates an executable named "curl_wrapper" from the "curl_wrapper.cpp" source file.
 add_executable(main main.cpp)
 
-# Link our executable against libcurl.
-# This is the modern, preferred way to link libraries in CMake.
-# The "CURL::libcurl" target is an "imported target" created by find_package(CURL).
-# It automatically handles setting the include directories (-I), library paths (-L),
-# and the library to link against (-lcurl).
-target_link_libraries(main PRIVATE CURL::libcurl)
+
 
 # That's it!
