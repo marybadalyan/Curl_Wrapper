@@ -1,11 +1,10 @@
-# Specify the minimum version of CMake required to build this project.
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
+project(libraries_frameworks LANGUAGES CXX)
 
-# Define the project name and specify that it's a C++ project.
-project(CurlWrapperExample CXX)
+set(CMAKE_CXX_EXTENSIONS OFF)
+find_package(CURL REQUIRED)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
+# Task 3
 add_executable(main main.cpp)
+target_link_libraries(main PRIVATE CURL::libcurl)
+target_compile_features(main PRIVATE cxx_std_20)

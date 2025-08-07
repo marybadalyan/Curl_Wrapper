@@ -1,0 +1,3 @@
+C:/Users/MeriBadalyan/Curl_Wrapper/build/CMakeFiles/main.dir
+C:/Users/MeriBadalyan/Curl_Wrapper/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/MeriBadalyan/Curl_Wrapper/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,10 @@
+^C:\USERS\MERIBADALYAN\CURL_WRAPPER\BUILD\CMAKEFILES\E429A4DCE63378347C356FB21F8A9393\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MeriBadalyan/Curl_Wrapper -BC:/Users/MeriBadalyan/Curl_Wrapper/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/MeriBadalyan/Curl_Wrapper/build/curl_example.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

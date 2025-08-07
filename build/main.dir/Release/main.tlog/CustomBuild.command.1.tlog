@@ -1,0 +1,10 @@
+^C:\USERS\MERIBADALYAN\CURL_WRAPPER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MeriBadalyan/Curl_Wrapper -BC:/Users/MeriBadalyan/Curl_Wrapper/build --check-stamp-file C:/Users/MeriBadalyan/Curl_Wrapper/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
